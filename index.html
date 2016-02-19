@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ЛЕС</title>
+    <!-- [favicon] begin -->
+    <link rel="shortcut icon" type="image/x-icon" href="img/el.jpg" />
+    <link rel="icon" type="image/x-icon" href="img/el.jpg" />
+    <!-- [favicon] end -->
+
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+    <link href="css/drova.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+
+  <div class="container">
+      <div class="row">
+
+        <div class="wrapper" id="wrapper">
+
+            <!--НАЧАЛО МЕЛКОДРЕВА-->
+            <div class="table-responsive melcodrev">
+                <table class="table table-bordered">
+                    <tr>
+                        <td>
+                            <h4>ДЛИНА</h4>
+                            <select class="form-control" id="Lmd">
+                                <option value="LM_3_8">3,8 м</option>
+                                <option value="LM_2_9">2.9 м</option>
+                                <option value="LM_3_7">3,7 м</option>
+                                <option value="LM_3_9">3,9 м</option>
+                            </select>
+                        </td>
+                        <td class="close-melcodrev">
+                            <button id="reset-melcodrev" class="btn btn-default">
+                                СБРОС
+                            </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <i class="fa fa-ban"></i>
+                            12 - <input type="text" diam="12" class="form-control param" id="diam12" placeholder="шт">
+                        </td>
+                        <td>
+                            <input type="text" class="form-control param" id="val12" placeholder="объем" readonly>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <i class="fa fa-ban"></i>
+                            14 - <input type="text" diam="14" class="form-control param" id="diam14" placeholder="шт">
+                        </td>
+                        <td>
+                            <input type="text" class="form-control param" id="val14" placeholder="объем" readonly>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <i class="fa fa-ban"></i>
+                            16 - <input type="text" diam="16" class="form-control param" id="diam16" placeholder="шт">
+                        </td>
+                        <td>
+                            <input type="text" class="form-control param" id="val16" placeholder="объем" readonly>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <i class="fa fa-ban"></i>
+                            18 - <input type="text" diam="18" class="form-control param" id="diam18" placeholder="шт">
+                        </td>
+                        <td>
+                            <input type="text" class="form-control param" id="val18" placeholder="объем" readonly>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"><h4>ВСЕГО</h4></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            шт
+                            <input type="text" class="form-control param" id="diam_total" placeholder="0" readonly>
+                        </td>
+                        <td>
+                            v
+                            <input type="text" class="form-control param" id="val_total" placeholder="0" readonly>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <button id="switch-of-melcodrev" class="btn btn-default">
+                                ЗАКРЫТЬ
+                            </button>
+                        </td>
+                    </tr>
+                </table>
+            </div><!-- .table-responsive -->
+            <!--КОНЕЦ ФОРМЫ МЕЛКОДРЕВА-->
+
+            <!--НАЧАЛО ВОЗОБНОВЕНИЯ РАБОТЫ ПОСЛЕ СБОЯ-->
+            <div class="sos-wrapper">
+                <div class="sos">
+                    <h4>Номер последнего бревна</h4>
+                    <input type="text" class="" id="last-N">
+
+                    <h4>Последний общий объем</h4>
+                    <input type="text" class="" id="last-totalV">
+                    <br>
+                    <br>
+                    <button class="sos-btn" class="btn btn-default">
+                        Продолжить работу
+                    </button>
+                </div><!-- .sos  -->
+            </div>
+            <!--КОНЕЦ ВОЗОБНОВЕНИЯ РАБОТЫ ПОСЛЕ СБОЯ-->
+
+
+
+            <!--НАЧАЛО ВЫБОРА ДЛИНЫ-->
+            <div class="row choose-len cliarfix">
+                  <h3>Выбрать длину</h3>
+                <div class="choose-len-wrap col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                    <i class="fa fa-check"></i>
+                    <button class="choose-len-btn" len="38" onClick="event.preventDefault();">3.8 м</button>
+                </div>
+                  <div class="choose-len-wrap col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                      <i class="fa fa-check"></i>
+                      <button class="choose-len-btn" len="58" onClick="event.preventDefault();">5.8 м</button>
+                  </div>
+              </div><!-- .choose-len-->
+                <hr>
+            <!--КОНЕЦ ВЫБОРА ДЛИНЫ-->
+
+            <!--НАЧАЛО ВВОДА ДИАМЕТРА-->
+            <h3>Ввести диаметр(14 - 100)</h3>
+                <div class="error"></div>
+                <div class="well-done"></div>
+            <div>
+              <span class="num">№ 1</span> &nbsp;
+              <input type="text" class="form-control param" id="diam" readonly="readonly" placeholder="диам."> &nbsp;
+              <input type="text" class="form-control param" id="val" placeholder="объем" disabled>
+            </div>
+            <span>Общий объем</span>
+            <div class="total-val total-val-top">
+                <input type="text" class="form-control param" id="total_val_top" disabled>
+            </div>
+            <!--КОНЕЦ ВВОДА ДИАМЕТРА-->
+
+            <br>
+
+            <!--НАЧАЛО ВЫВОДА MAX И ОБЩЕГО ОБЪЕМОВ-->
+            <div>
+                <div class="table-responsive">
+                    <table class="table table-button">
+                        <tr>
+                            <td rowspan="2">
+                                <div style="position: relative;">
+                                    <button id="enter-diam" class="btn btn-default" onClick="event.preventDefault();">
+                                        <img src="img/btn.png" height="150" width="150" alt="button">
+                                    </button>
+                                    <div id="btn-text-enter">ВВОД</div>
+                                </div>
+                            </td>
+                            <td>
+                                <div><h4>Осталось</h4></div>
+                                <div class="max-val">
+                                    <input type="text" class="form-control max-val" id="max-val-rest" placeholder="0" disabled>
+                                </div>
+                            </td>
+                        <tr>
+                            <td>
+                                <div><h4>V max</h4></div>
+                                <div class="max-val">
+                                    <input type="text" class="form-control max-val" id="max-val" placeholder="36600">
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div><!-- .table-responsive -->
+
+                <h3>Общий объем</h3>
+                <div class="total-val">
+                    <input type="text" class="form-control param" id="total_val" disabled>
+                </div>
+            </div>
+            <hr>
+            <!--КОНЕЦ ВЫВОДА MAX И ОБЩЕГО ОБЪЕМОВ-->
+
+            <!--НАЧАЛО ВЫВОДА ВСЕЙ ЗАГРУЗКИ-->
+            <h3>Вся загрузка</h3>
+            <div class="table-responsive">
+                <table class="table table-res table-striped table-bordered">
+                    <tr class="tab-header">
+                        <th>№</th>
+                        <th>L</th>
+                        <th>D</th>
+                        <th>V</th>
+                        <th>Общий V</th>
+                        <th id="delete" title="удалить последнюю строку"><i class="fa fa-minus-square"></i></th>
+                    </tr>
+                    <tr>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                    </tr>
+                </table>
+            </div><!-- .table-responsive -->
+            <!--КОНЕЦ ВЫВОДА ВСЕЙ ЗАГРУЗКИ-->
+
+            <!--НАЧАЛО ПЕРЕХОДА К НОВОМУ КОНТЕЙНЕРУ-->
+            <div class="next-cont">
+                <button id="next-cont" class="btn btn-default" onClick="event.preventDefault();">
+                    Новый контейнер
+                </button>
+            </div><!-- .next-cont-->
+            <!--КОНЕЦ ПЕРЕХОДА К НОВОМУ КОНТЕЙНЕРУ-->
+            <br>
+            <!--НАЧАЛО ВКЛЮЧИТЬ МЕЛКОДРЕВ-->
+            <div class="show-melcodrev">
+                <button id="switch-on-melcodrev" class="btn btn-default">
+                    Мелкодрев
+                </button>
+            </div><!-- .next-cont-->
+            <!--КОНЕЦ ВКЛЮЧИТЬ МЕЛКОДРЕВ-->
+            <br>
+            <!--НАЧАЛО ВОЗВРАТА ПОСЛЕ СБОЯ-->
+            <div class="show-sos">
+                <button id="switch-sos" class="btn btn-default">
+                    После сбоя
+                </button>
+            </div><!-- .next-cont-->
+            <!--КОНЕЦ ВОЗВРАТА ПОСЛЕ СБОЯ-->
+
+            <div class="mesages_ajax">
+
+            </div>
+
+            <footer>
+                2016&nbsp;&copy;&nbsp;<a href="http://radov.xyz/" target="_blank">radov.xyz</a>
+                <a href="#wrapper" class="to-top">
+                    <i class="fa fa-caret-up fa-3x" title="вверх"></i>
+                </a>
+            </footer>
+
+        </div><!--.wrapper-->
+
+      </div><!-- .row -->
+
+  </div><!-- .container -->
+
+  <!--НАЧАЛО КЛАВИАТУРЫ-->
+  <!--<div class="table-responsive numbers hidden-lg hidden-md hidden-sm">-->
+  <div class="table-responsive numbers">
+      <table class="table table-bordered">
+          <tr>
+              <td val="1"><b>1</b></td>
+              <td val="2"><b>2</b></td>
+              <td val="3"><b>3</b></td>
+              <td val="4"><b>4</b></td>
+          </tr>
+          <tr>
+              <td val="5"><b>5</b></td>
+              <td val="6"><b>6</b></td>
+              <td val="7"><b>7</b></td>
+              <td val="8"><b>8</b></td>
+          </tr>
+          <tr>
+              <td val="9"><b>9</b></td>
+              <td val="0"><b>0</b></td>
+              <td class="del" val="del" title="удалить"><i class="fa fa-minus-square"></i></td>
+              <td class="ok" val="ok" title="закрыть"><i class="fa fa-check-square-o"></i></td>
+          </tr>
+      </table>
+  </div><!-- .table-responsive -->
+  <!--КОНЕЦ КЛАВИАТУРЫ-->
+
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+    (function (d, w, c) {
+        (w[c] = w[c] || []).push(function() {
+            try {
+                w.yaCounter35213760 = new Ya.Metrika({
+                    id:35213760,
+                    clickmap:true,
+                    trackLinks:true,
+                    accurateTrackBounce:true
+                });
+            } catch(e) { }
+        });
+
+        var n = d.getElementsByTagName("script")[0],
+            s = d.createElement("script"),
+            f = function () { n.parentNode.insertBefore(s, n); };
+        s.type = "text/javascript";
+        s.async = true;
+        s.src = "https://mc.yandex.ru/metrika/watch.js";
+
+        if (w.opera == "[object Opera]") {
+            d.addEventListener("DOMContentLoaded", f, false);
+        } else { f(); }
+    })(document, window, "yandex_metrika_callbacks");
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/35213760" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>-->
+    <script src="js/jquery-1.12.0.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/drova.js"></script>
+    <script>
+
+
+    </script>
+  </body>
+</html>

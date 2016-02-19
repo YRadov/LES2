@@ -1,0 +1,331 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+
+body{
+  background-color: #1b6d85;
+  position: relative;
+}
+
+.cliarfix:before, .cliarfix:after
+{
+  content: " ";
+  display: table;
+}
+.cliarfix:after
+{
+  clear: both;
+}
+//****************************************
+#all-lag
+{
+  font-size: 20px;
+}
+
+#btn-text-enter
+{
+  color: red;
+  position: absolute;
+  left: 40%;
+  top: 0;
+  font-weight: bold;
+}//#btn-text-enter
+
+.choose-len
+{
+  font-size: 25px;
+  padding: 0 20px;
+
+  h3{
+    margin-top: 0;
+  }
+  button{
+    border-radius: 5px;
+    width: 80px;
+  }
+
+}//choose-len
+
+.choose-len-wrap
+{
+  text-align: center;
+  i{
+    color: red;
+    opacity: 0;
+  }
+
+}//.choose-len-wrap
+
+#delete
+{
+
+  color: red;
+}
+
+#delete:hover
+{
+  cursor: pointer;
+}
+
+#enter-diam
+{
+  background-color: transparent;
+  border: none;
+}
+
+.error
+{
+  background-color: white;
+  border: 3px solid red;
+  color: red;
+  display: none;
+  font-size: 20px;
+  width: 300px;
+  position: fixed;
+  text-align: center;
+  top:20px;
+}
+
+footer
+{
+  background-color: #222222;
+  color: white;
+  height: 50px;
+  line-height: 50px;
+  margin: 30px -10px -10px -10px;
+  padding: 10px;
+  position: relative;
+
+  a{color: white;}
+  a:hover{color: red;}
+  i{
+    color: white;
+    position: absolute;
+    right: 20px;
+  }
+  i:hover{
+    color: red;
+    cursor: pointer;
+  }
+
+}//footer
+
+h3{
+  margin: 0;
+  text-align: center;
+}
+
+hr{
+  margin: 10px auto;
+}
+label
+{
+  margin-right: 20px;
+}
+
+.left{float: left;}
+
+.max-val, .max-val-rest
+{
+  text-align: center;
+}
+
+.max-val
+{
+  font-size: 16px;
+}
+
+.next-cont
+{
+  margin-top: 30px;
+  text-align: center;
+  position: relative;
+}
+
+.num
+{
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.param{
+  display: inline-block;
+  font-size: 20px;
+  width: 90px;
+}
+.right{float: right;}
+
+.submit{
+  text-align: center;
+  button{
+    font-size: 20px;
+  }
+}
+
+.table
+{
+  text-align: center;
+}
+
+.table-button
+{
+  background-color: #28b4cc;
+}
+
+.tab-header
+{
+  background-color: #ccc !important;
+}
+
+.total-val
+{
+  text-align: center;
+
+  #total_val{
+    background-color: green;
+    color: white;
+  }
+  input{
+    width: 100%;
+    text-align: center;
+  }
+}
+
+.total-val-top
+{
+  display: inline-block;
+  margin: 5px auto;
+  width: 140px;
+
+ #total_val_top{
+   color: white;
+   background-color: green;
+   font-size: 16px;
+   padding: 0;
+   height: 20px;
+ }
+
+}//.total-val-top
+
+#val{
+  width: 110px;
+}
+
+.well-done
+{
+  background-color: white;
+  border: 3px solid green;
+  color: green;
+  display: none;
+  font-size: 20px;
+  position: fixed;
+}
+
+.wrapper
+{
+background-color: #28b4cc;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  margin: 0 auto;
+  padding: 10px;
+  max-width: 320px;
+}
+//************************************************
+//йкюбхюрспю мювюкн
+
+.numbers
+{
+  background-color: white;
+  display: none;
+  position: fixed;
+  bottom: 0;
+
+
+  .del  {
+    color: red;
+  }
+  .del:hover  {
+    color: red;
+  }
+
+  .ok  {
+    color: green;
+  }
+  .ok:hover  {
+    color: green;
+  }
+
+  td{
+    font-size: 20px;
+  }
+  td:hover{
+    background-color: #999;
+    color: white;
+    cursor: pointer;
+  }
+
+}//.numbers
+//йкюбхюрспю йнмеж
+//*************************************************************
+//бнгнамнбкемхе оняке яанъ мювюкн
+.show-sos
+{
+  text-align: center;
+}
+
+.sos-wrapper
+{
+
+  display: none;
+  position: relative;
+
+
+  .sos{
+    background-color: white;
+    text-align: center;
+    padding: 10px;
+    width: 300px;
+  }//.sos
+}//.sos-wrapper
+//бнгнамнбкемхе оняке яанъ йнмеж
+//*************************************************************
+//лекйндпеб мювюкн
+.show-melcodrev
+{
+  text-align: center;
+}
+
+.melcodrev
+{
+  background-color: white;
+  display: none;
+  //height: 700px;
+  //position: fixed;
+  //top: 0;
+
+  .close-melcodrev{
+    background-color: red;
+    vertical-align: middle;
+    .btn{
+      border: 5px solid #ccc;
+      color: red;
+      font-weight: bold;
+    }
+  }
+  select{
+    font-size: 20px;
+    option{
+      text-align: center;
+    }
+  }//select
+
+  td{
+    font-size: 20px;
+  }
+
+}//.melcodrev
+//лекйндпеб йнмеж
+
+
+
