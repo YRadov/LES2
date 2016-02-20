@@ -76,7 +76,7 @@ function allReset()
                       .css("backgroundColor","white");
 }
 
-//Сброс всех параметров
+//Сброс всех параметров мелкодрев
 function allMelcodrevReset() {
     $('#diam12').val('0');
     $('#val12').val('0');
@@ -335,9 +335,10 @@ $('#delete').click(function() {
 
         if(result)
         {
-            //пересчет общего объема
+            //пересчет общего объема в двух местах
             totalV -= Partia[N-1]['Val'];
             $('#total_val').val(totalV);
+            $('#total_val_top').val(totalV);
 
             //вывод нового остатка
             totalRest();

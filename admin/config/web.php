@@ -3,9 +3,14 @@
 $params = require(__DIR__ . '/params.php');
 
 $config = [
-    'id' => 'basic',
+    'id' => 'les2',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
+    // 'modules' => [
+    //     'admin' => [
+    //         'class' => 'app\modules\admin\Module',
+    //     ],
+    // ],
     'components' => [
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
@@ -38,15 +43,18 @@ $config = [
             ],
         ],
         'db' => require(__DIR__ . '/db.php'),
-        /*
         'urlManager' => [
+            'class' => 'yii\web\UrlManager',
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
+                'hi' => ''
             ],
         ],
-        */
     ],
+    'language' => 'ru-RU',
+    'sourceLanguage' => 'ru-RU',
+    'timeZone' => 'Europe/Kiev',
     'params' => $params,
 ];
 
