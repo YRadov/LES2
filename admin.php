@@ -1,14 +1,8 @@
 <?php
 session_start();
+print_arr($_SESSION);
 
-function print_arr($arr)
-{
-    echo '<pre>';
-    print_r($arr);
-    echo '</pre>';
-}
-
-//print_arr($_SESSION);
+$container_num = 1234567;
 ?>
 <!DOCTYPE html>
 <html lang="ru">
@@ -38,19 +32,27 @@ function print_arr($arr)
 <body>
 <h1>АДМИН-ПАНЕЛЬ<h1>
 <h3>Данные загрузки<h3>
+<?php if($container_num):?>
+   <h4 style="color: white">
+       Контейнер № <?=$container_num;?>
+   </h4>
+<?php endif;?>
+
 
 <table class="table table-res table-striped table-bordered">
     <tr class="tab-header">
-        <th>№</th>
-        <th>L</th>
-        <th>D</th>
-        <th>V</th>
-        <th>Общий V</th>
+        <th style="text-align: center;">№</th>
+        <th style="text-align: center;">L</th>
+        <th style="text-align: center;">D</th>
+        <th style="text-align: center;">V</th>
+        <th style="text-align: center;">Общий V</th>
     </tr>
 
     <?php
         $i = count($_SESSION['data']);
-        $temp_arr = array_reverse($_SESSION['data']);
+        if($i > 0):
+        //$temp_arr = array_reverse($_SESSION['data']);
+        $temp_arr = $_SESSION['data'];
         $totalV = 0;
         foreach($temp_arr as $data):?>
     <tr>
@@ -60,7 +62,7 @@ function print_arr($arr)
         <td><?=$data['val'];?></td>
         <td><?=$totalV += $data['val'];?></td>
     </tr>
-    <?php endforeach;?>
+    <?php endforeach; endif;?>
 
 </table>
 

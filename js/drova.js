@@ -1,39 +1,60 @@
 //************************************************
 //*******ПЕРЕМЕННЫЕ*******************************
 //************************************************
+//ДАННЫЕ ПО КОНТЕЙНЕРУ
+var contNum   = '0';
+var contGross = '0';
+var contTare  = '0';
+var contPay   = '0';
+
+//ДАННЫЕ ПО РАБОТНИКУ(ФИО)
+var Employer = '';
+
 //Длина загружаемого леса
 var Len = 0;
+
 //Номер бревна попорядку
 var N = 1;
+
 //Диаметр бревна
 var D = 0;
+
 //Объем бревна заданного диаметра
 var V = 0;
+
 //Общий объем загруженных бревен
 var totalV = 0;
 $('#total_val').val(0);
 $('#total_val_top').val(0);
+
 //Для таблицы объем загруженных бревен
 var tempTotalVal = 0;
+
 //Максимальный объем
 var maxV = 36600;
-$('#max-val').val(36600);
+$('#max-val').val(36200);
+
 //Осталось загрузить
 var restVal = 0;
 $('#max-val-rest').val($('#max-val').val());
+
 //Когда предупреждать о близком конце загрузки
 var attention = 2000;//cm3
+
 //Общий массив загрузки
 var Partia = [];
+
 //Массивы соответствий D:V для разных длин
-var L_3_8 = [];
-var L_5_8 = [];
+var L_3_8  = [];
+var L_5_8  = [];
 var LM_2_9 = [];
 var LM_3_7 = [];
 var LM_3_8 = [];
 var LM_3_9 = [];
+
 //Набор диаметра с собственной клавиатуры
 var Diam = '';
+
 //Набор диаметра с клавиатуры телефона
 var temp_diam;
 
@@ -44,19 +65,21 @@ var temp_diam;
 //Вывод всех параметров
 function showParam(){
     console.log (
-        'N = ' + N  + '\n' +
-        'Len = ' + Len + '\n' +
-        'D = ' + D + '\n' +
-        'V = ' + V + '\n' +
+        'N = '      + N       + '\n' +
+        'Len = '    + Len     + '\n' +
+        'D = '      + D       + '\n' +
+        'V = '      + V       + '\n' +
         'totalV = ' + totalV  + '\n'
     );
 }
+//************************************************
 
 //Показ сообщений
 function errorMessages(message){
     $('.error').text(message).fadeIn().delay(2000).fadeOut();
 }
 
+//************************************************
 //Сброс всех параметров
 function allReset()
 {
@@ -76,6 +99,8 @@ function allReset()
                       .css("backgroundColor","white");
 }
 
+//************************************************
+
 //Сброс всех параметров мелкодрев
 function allMelcodrevReset() {
     $('#diam12').val('0');
@@ -90,6 +115,8 @@ function allMelcodrevReset() {
     $('#val_total').val('0');
 
 }
+
+//************************************************
 
 //Вывод результатов в таблицу(DESC)
 function showData()
@@ -118,6 +145,42 @@ function showData()
     }//for
 }
 
+//************************************************
+
+//Вывод результатов с сервера в таблицу(DESC)
+function showOnLineData(partia) {
+
+    console.log(partia);
+    console.log(partia.length);
+    tempTotalVal = 0;
+    var P_len = partia.length - 1;
+
+    for (var i = P_len; i > 0  ; i--) {
+
+        if(i == P_len)//для первого элемента
+            tempTotalVal = totalV;
+        else
+            tempTotalVal -= partia[i+1]['Val'];
+
+
+        if (partia[i] != undefined) {
+            $('.table-res').append(
+                '<tr>' +
+                '<td><b>' + i + '</b></td>' +
+                '<td>' + partia[i]['L'] + '</td>' +
+                '<td><b>' + partia[i]['Diam'] + '</b></td>' +
+                '<td>' + partia[i]['Val'] + '</td>' +
+                '<td><b>' + tempTotalVal + '</b></td>' +
+                '<td>' + i + '</td>' +
+                '</tr>'
+            );
+
+        }//if1
+    }//for
+}
+
+//************************************************
+
 //Печать таблицы результатов(ASC)
 function showDataASC()
 {
@@ -132,6 +195,8 @@ function showDataASC()
         '</tr>'
     );
 }
+
+//************************************************
 
 //Подсчет остатка
 function totalRest()
@@ -230,6 +295,7 @@ $('#enter-diam').click(function(){
                 "backgroundColor":"red",
                 "color":"white"
             });
+            errorMessages('До max V < 2000');
         }
         else
         {
@@ -240,14 +306,12 @@ $('#enter-diam').click(function(){
         }
 
         //добавляем данные по текущему бревну в массив
+
         Partia[N]= {
             "L": Len/10,
             "Diam": D,
             "Val": V
         };
-        var log_len = Len/10;
-        var log_diam = D;
-        var log_val = V;
         //********************************
         //начало отправки данных на сервер
 
@@ -255,25 +319,32 @@ $('#enter-diam').click(function(){
             "type":"post",
             "url":"controller.php",
             "data":{
-                "log_num": N,
-                "log_len": log_diam,
-                "log_diam": log_diam,
-                "log_val": log_val
+                //"log_num": N,
+                //"log_len": Len/10,
+                //"log_diam": D,
+                //"log_val": V,
+                "partia": Partia
             },
             "dataType":'json',
-            "success":function(data){
+            "success":function(data)
+            {
                 //alert(data.message);
+                errorMessages(data.message);
+                var partiaServer = data.partia;
+                //console.log(partiaServer);
+                //alert(partia.length);
 
+                showOnLineData(partiaServer);
 
-            }
-        });
+            }//success
+        });//ajax
         //конец отправки данных на сервер
         //********************************
 
         $('.table-res tr td').remove();
 
         //Вывод результатов в таблицу(DESC)
-        showData();
+//!!!!!!!!! //showData();
 
         //Номер бревна по порядку
         N++;

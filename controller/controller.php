@@ -10,31 +10,35 @@ require_once MODEL;
 // подключение библиотеки функций
 require_once FUNCTIONS;
 
-if($_POST['log_num'])
+
+//НАЧАЛО ДОБАВЛЕНИЯ БРЕВНА В БД
+if($_POST['partia'])
 {
-    $num = $_POST['log_num'];
-    $_SESSION['data'][$num] = [
-        'len'=>$_POST['log_len'],
-        'diam'=>$_POST['log_diam'],
-        'val'=>$_POST['log_val']
-    ];
 
-    $_SESSION['last_name'] = '';
-    $_SESSION['container'] = '';
+    $new_log = [];
+    $new_log = $_POST;
+    //добавляем бревно в БД
+    $add = addLog($new_log);
 
-    $num = $_POST['log_num'];
-    $diam = $_POST['log_diam'];
-    $val = $_POST['log_val'];
-    $len = $_POST['log_val'];
+    //получение данных партии из бд и отправка приложению
+    //getPartiaLogs($container_num);
 
+    if($add) $message = "Данные приняты на сервере";
+    else $message = "Данные не сохранены. Попробуйте еще раз.";
 
-    $message = "Данные приняты на сервере";
     $res = [];
     $res = [
         "message" => $message,
+        "partia"  => $_SESSION['partia'],
     ];
     echo json_encode($res);
     exit;
-}
 
-require_once 'index.html';
+}//КОНЕЦ ДОБАВЛЕНИЯ БРЕВНА В БД
+
+//print_arr($_SERVER);
+
+if($_SERVER['REQUEST_URI'] == '/admin')
+    require_once 'admin.php';
+else
+    require_once 'index.html';
