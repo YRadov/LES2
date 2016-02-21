@@ -26,6 +26,13 @@ defined('LES') or die('Access denied');
 //Запись нового бревна в БД
 function addLog($log)
 {
+    $employer = 'Радов';
+    $container_num = 1234567;
+    $container_line = 'MAERSK';
+    $container_gross_wt = 32500;
+    $container_tare_wt = 3880;
+    $container_pay = 28620;
+
     $_SESSION['partia'] = $log['partia'];
     $_SESSION['last_name'] = '';
     $_SESSION['container'] = '';

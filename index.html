@@ -30,6 +30,69 @@
 
         <div class="wrapper" id="wrapper">
 
+            <!--НАЧАЛО ДАННЫЕ КОНТЕЙНЕРА-->
+            <div class="table-responsive container-data">
+                <h3>Данные контейнера</h3>
+                <table class="table table-bordered">
+                    <tr>
+                        <td>№</td>
+                        <td>
+                            <input type="text" class="form-control" id="cont-num" placeholder="№ контейнера">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Линия</td>
+                        <td>
+                            <select class="form-control" id="cont-line">
+                                <option value="empty"></option>
+                                <option value="SMA">SMA</option>
+                                <option value="MSC">MSC</option>
+                                <option value="MAERSK">MAERSK</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>GROSS WT.</td>
+                        <td>
+                            <input type="text" class="form-control" id="gross-wt">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>TARE WT.</td>
+                        <td>
+                            <input type="text" class="form-control" id="tare-wt">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>PAYLOAD</td>
+                        <td>
+                            <input type="text" class="form-control" id="pay-wt">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Грузил</td>
+                        <td>
+                            <input type="text" class="form-control" id="emp-name" placeholder="ФИО">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <button id="save-cont" class="btn btn-default">
+                                СОХРАНИТЬ
+                            </button>
+                        </td>
+                        <td>
+                            <button id="reset-cont" class="btn btn-default">
+                                ОЧИСТИТЬ
+                            </button>
+                        </td>
+                    </tr>
+                </table>
+            </div><!-- .table-responsive -->
+            <!--КОНЕЦ ДАННЫЕ КОНТЕЙНЕРА-->
+
+
+
             <!--НАЧАЛО МЕЛКОДРЕВА-->
             <div class="table-responsive melcodrev">
                 <table class="table table-bordered">

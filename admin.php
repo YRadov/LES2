@@ -2,7 +2,13 @@
 session_start();
 print_arr($_SESSION);
 
-$container_num = 1234567;
+$employer = 'Радов';
+$container_num = 'MRKU 1234567';
+$container_line = 'MAERSK';
+$container_gross_wt = 32500;
+$container_tare_wt = 3880;
+$container_pay = 28620;
+
 ?>
 <!DOCTYPE html>
 <html lang="ru">
@@ -35,6 +41,17 @@ $container_num = 1234567;
 <?php if($container_num):?>
    <h4 style="color: white">
        Контейнер № <?=$container_num;?>
+   </h4>
+   <h4 style="color: white">
+       Линия: <?=$container_line;?>
+   </h4>
+   <h4 style="color: white">
+       Максимальный вес:        <?=$container_gross_wt;?> кг<br>
+       Вес пустого контейнера:  <?=$container_tare_wt;?> кг<br>
+       Максимальный вес груза:  <?=$container_pay;?> кг
+   </h4>
+   <h4 style="color: white">
+       Грузил: <?=$employer;?>
    </h4>
 <?php endif;?>
 
